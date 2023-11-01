@@ -1,7 +1,10 @@
-# Exp-6-Synchornous-counters - up counter and down counter 
-### AIM: To implement 4 bit up and down counters and validate  functionality.
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
+## Exp-6-Synchornous-counters - up counter and down counter 
+### AIM: 
+To implement 4 bit up and down counters and validate  functionality.
+### HARDWARE REQUIRED:  
+– PC, Cyclone II , USB flasher
+### SOFTWARE REQUIRED:  
+Quartus prime
 ### THEORY 
 
 ## UP COUNTER 
@@ -51,38 +54,57 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 ### PROGRAM 
-/*
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
-
-
-
-
-
+Developed by: Santhosh S
+RegisterNumber:  212222100047
+```
+```
+module proj6counters(D,C,B,A,clk);
+output reg D,C,B,A;
+input clk;
+always@(posedge clk)
+begin 
+D=(C&B&A)^D;
+C=(B&A)^C;
+B=(A^B);
+A=1^A;
+end 
+endmodule
+```
+### DOWN COUNTER
+```
+module downcounter(clk,a);
+input clk;
+output reg[3:0]a;
+always@(posedge clk)
+begin
+a[3]=(~a[2] & ~a[1] & ~a[0])^ a[3];
+a[2]=(~a[1] & ~a[0]) ^ a[2];
+a[1]=(~a[0] ^ a[1]);
+a[0]=1 ^ a[0];
+end
+endmodule
+```
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
-
-
-
-
-
-
-
+### RTL LOGIC UP COUNTER
+![image](https://github.com/MrSanthosh-dev/Exp-7-Synchornous-counters-/assets/117916573/e778f52d-77a7-4804-a615-5b609b8dc54e)
+### RTL LOGIC DOWN COUNTER  
+![image](https://github.com/MrSanthosh-dev/Exp-7-Synchornous-counters-/assets/117916573/38e763ef-a1cb-4909-ad6f-6c2a3f5bfa92)
 
 
 ### TIMING DIGRAMS FOR COUNTER  
-
-
-
-
+### UP COUNTER
+![image](https://github.com/MrSanthosh-dev/Exp-7-Synchornous-counters-/assets/117916573/99c3f8fd-fd27-4370-878d-a68a8375e45b)
+### DOWN COUNTER
+![image](https://github.com/MrSanthosh-dev/Exp-7-Synchornous-counters-/assets/117916573/fb717988-19f5-4fd6-9349-25465347142c)
 
 ### TRUTH TABLE 
-
-
-
-
-
+### UP COUNTER
+![image](https://github.com/MrSanthosh-dev/Exp-7-Synchornous-counters-/assets/117916573/7420db36-e48f-4ac9-a800-c8f2c4eb574e)
+### DOWN COUNTER
+![image](https://github.com/MrSanthosh-dev/Exp-7-Synchornous-counters-/assets/117916573/a5264cc7-7a87-4594-8529-e098f8a8e735)
 
 ### RESULTS 
+Thus,the implementation of 4 bit up and down counters and validate  functionality has been successfully executed.
